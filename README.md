@@ -10,3 +10,7 @@ The program written on C language in Atmel Studio 7 IDE;
 In PCB folder you can find schematic circuits and PCB;
 
 In LightController folder you can find source code and Atmel Studio project;
+
+In D3MG_PCB folder you can find PCB for DIN-rail package D3MG;
+
+In Simulation folder you can find Proteus 8 project file for device simulation;
