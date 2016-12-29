@@ -5,6 +5,6 @@ and handmade optodriver (light sensor based on phototransistor and Rail-To-Rail 
 
 The program written on C language in Atmel Studio 7 IDE;
 
-In PCB folder you can found schematic circuits and PCB;
+In PCB folder you can find schematic circuits and PCB;
 
-In LightController folder you can found source code and Atmel Studio project; 
+In LightController folder you can find source code and Atmel Studio project;
