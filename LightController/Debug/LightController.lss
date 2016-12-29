@@ -3,13 +3,13 @@ LightController.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000003be  00000000  00000000  00000094  2**1
+  0 .text         000003bc  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000002  00800060  000003be  00000452  2**0
+  1 .data         00000002  00800060  000003bc  00000450  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000018  00800062  00800062  00000454  2**0
+  2 .bss          00000018  00800062  00800062  00000452  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000454  2**0
+  3 .comment      00000030  00000000  00000000  00000452  2**0
                   CONTENTS, READONLY
   4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000484  2**2
                   CONTENTS, READONLY
@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000422  00000000  00000000  00000aa9  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000047d  00000000  00000000  00000ecb  2**0
+  8 .debug_line   00000477  00000000  00000000  00000ecb  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000a8  00000000  00000000  00001348  2**2
+  9 .debug_frame  000000a8  00000000  00000000  00001344  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000003a6  00000000  00000000  000013f0  2**0
+ 10 .debug_str    0000039a  00000000  00000000  000013ec  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000000d3  00000000  00000000  00001796  2**0
+ 11 .debug_loc    000000d3  00000000  00000000  00001786  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000030  00000000  00000000  00001869  2**0
+ 12 .debug_ranges 00000030  00000000  00000000  00001859  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -54,7 +54,7 @@ Disassembly of section .text:
   1c:	10 e0       	ldi	r17, 0x00	; 0
   1e:	a0 e6       	ldi	r26, 0x60	; 96
   20:	b0 e0       	ldi	r27, 0x00	; 0
-  22:	ee eb       	ldi	r30, 0xBE	; 190
+  22:	ec eb       	ldi	r30, 0xBC	; 188
   24:	f3 e0       	ldi	r31, 0x03	; 3
   26:	02 c0       	rjmp	.+4      	; 0x2c <__do_copy_data+0x10>
   28:	05 90       	lpm	r0, Z+
@@ -77,7 +77,7 @@ Disassembly of section .text:
   3e:	b2 07       	cpc	r27, r18
   40:	e1 f7       	brne	.-8      	; 0x3a <.do_clear_bss_loop>
   42:	41 d1       	rcall	.+642    	; 0x2c6 <main>
-  44:	ba c1       	rjmp	.+884    	; 0x3ba <_exit>
+  44:	b9 c1       	rjmp	.+882    	; 0x3b8 <_exit>
 
 00000046 <__bad_interrupt>:
   46:	dc cf       	rjmp	.-72     	; 0x0 <__vectors>
@@ -331,7 +331,7 @@ ISR (TIM0_COMPA_vect)
 	}
 
 	//Switch on delay and Pir sensor debounce;
-	if ((!(PIR_STATUS)) && (keyFlag == 0) && (photoSeensor >= sensivity))
+	if ((!(PIR_STATUS)) && (keyFlag == 0) && (photoSeensor <= sensivity))
  1ea:	b0 99       	sbic	0x16, 0	; 22
  1ec:	19 c0       	rjmp	.+50     	; 0x220 <__vector_6+0x178>
  1ee:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <keyFlag>
@@ -341,8 +341,8 @@ ISR (TIM0_COMPA_vect)
  1fa:	30 91 73 00 	lds	r19, 0x0073	; 0x800073 <photoSeensor+0x1>
  1fe:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <sensivity>
  202:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <sensivity+0x1>
- 206:	28 17       	cp	r18, r24
- 208:	39 07       	cpc	r19, r25
+ 206:	82 17       	cp	r24, r18
+ 208:	93 07       	cpc	r25, r19
  20a:	50 f0       	brcs	.+20     	; 0x220 <__vector_6+0x178>
 			on++;
  20c:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <on>
@@ -355,15 +355,15 @@ ISR (TIM0_COMPA_vect)
  220:	10 92 71 00 	sts	0x0071, r1	; 0x800071 <on+0x1>
  224:	10 92 70 00 	sts	0x0070, r1	; 0x800070 <on>
 	
-	if ((!(PIR_STATUS)) && (photoSeensor < sensivity) && (BULB_STATUS))
+	if ((!(PIR_STATUS)) && (photoSeensor > sensivity) && (BULB_STATUS))
  228:	b0 99       	sbic	0x16, 0	; 22
  22a:	17 c0       	rjmp	.+46     	; 0x25a <__vector_6+0x1b2>
  22c:	20 91 72 00 	lds	r18, 0x0072	; 0x800072 <photoSeensor>
  230:	30 91 73 00 	lds	r19, 0x0073	; 0x800073 <photoSeensor+0x1>
  234:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <sensivity>
  238:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <sensivity+0x1>
- 23c:	28 17       	cp	r18, r24
- 23e:	39 07       	cpc	r19, r25
+ 23c:	82 17       	cp	r24, r18
+ 23e:	93 07       	cpc	r25, r19
  240:	60 f4       	brcc	.+24     	; 0x25a <__vector_6+0x1b2>
  242:	b3 9b       	sbis	0x16, 3	; 22
  244:	0a c0       	rjmp	.+20     	; 0x25a <__vector_6+0x1b2>
@@ -516,7 +516,7 @@ int main(void)
  2ea:	90 91 65 00 	lds	r25, 0x0065	; 0x800065 <hours+0x1>
  2ee:	05 97       	sbiw	r24, 0x05	; 5
  2f0:	08 f4       	brcc	.+2      	; 0x2f4 <main+0x2e>
- 2f2:	61 c0       	rjmp	.+194    	; 0x3b6 <main+0xf0>
+ 2f2:	60 c0       	rjmp	.+192    	; 0x3b4 <main+0xee>
  2f4:	0e c0       	rjmp	.+28     	; 0x312 <main+0x4c>
  2f6:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <timeCounter>
  2fa:	90 91 6f 00 	lds	r25, 0x006F	; 0x80006f <timeCounter+0x1>
@@ -527,19 +527,19 @@ int main(void)
  308:	90 91 65 00 	lds	r25, 0x0065	; 0x800065 <hours+0x1>
  30c:	05 97       	sbiw	r24, 0x05	; 5
  30e:	08 f4       	brcc	.+2      	; 0x312 <main+0x4c>
- 310:	50 c0       	rjmp	.+160    	; 0x3b2 <main+0xec>
+ 310:	4f c0       	rjmp	.+158    	; 0x3b0 <main+0xea>
 		{
 			BULB_ON;
 		}
 		
 		//PIR=0,Switch=1;
-		if ((photoSeensor >= sensivity) && (!(PIR_STATUS))  && (on >= PIRDELAY))
+		if ((photoSeensor <= sensivity) && (!(PIR_STATUS))  && (on >= PIRDELAY))
  312:	20 91 72 00 	lds	r18, 0x0072	; 0x800072 <photoSeensor>
  316:	30 91 73 00 	lds	r19, 0x0073	; 0x800073 <photoSeensor+0x1>
  31a:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <sensivity>
  31e:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <sensivity+0x1>
- 322:	28 17       	cp	r18, r24
- 324:	39 07       	cpc	r19, r25
+ 322:	82 17       	cp	r24, r18
+ 324:	93 07       	cpc	r25, r19
  326:	58 f0       	brcs	.+22     	; 0x33e <main+0x78>
  328:	b0 99       	sbic	0x16, 0	; 22
  32a:	09 c0       	rjmp	.+18     	; 0x33e <main+0x78>
@@ -554,15 +554,15 @@ int main(void)
  33a:	c3 9a       	sbi	0x18, 3	; 24
  33c:	c6 cf       	rjmp	.-116    	; 0x2ca <main+0x4>
 
-		else if ((!(PIR_STATUS)) && (photoSeensor < sensivity) && (BULB_STATUS) && (timeCounterDown > PHOTOOFFSET))
+		else if ((!(PIR_STATUS)) && (photoSeensor > sensivity) && (BULB_STATUS) && (timeCounterDown > PHOTOOFFSET))
  33e:	b0 99       	sbic	0x16, 0	; 22
  340:	16 c0       	rjmp	.+44     	; 0x36e <main+0xa8>
  342:	20 91 72 00 	lds	r18, 0x0072	; 0x800072 <photoSeensor>
  346:	30 91 73 00 	lds	r19, 0x0073	; 0x800073 <photoSeensor+0x1>
  34a:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <sensivity>
  34e:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <sensivity+0x1>
- 352:	28 17       	cp	r18, r24
- 354:	39 07       	cpc	r19, r25
+ 352:	82 17       	cp	r24, r18
+ 354:	93 07       	cpc	r25, r19
  356:	58 f4       	brcc	.+22     	; 0x36e <main+0xa8>
  358:	b3 9b       	sbis	0x16, 3	; 22
  35a:	09 c0       	rjmp	.+18     	; 0x36e <main+0xa8>
@@ -576,15 +576,15 @@ int main(void)
  36a:	c3 98       	cbi	0x18, 3	; 24
  36c:	ae cf       	rjmp	.-164    	; 0x2ca <main+0x4>
 		
-		else if ((!(PIR_STATUS)) && (!switchOn || switchOn) && (photoSeensor>=sensivity)  && (BULB_STATUS))
+		else if ((!(PIR_STATUS)) && (!switchOn || switchOn) && (photoSeensor<=sensivity)  && (BULB_STATUS))
  36e:	b0 99       	sbic	0x16, 0	; 22
  370:	0f c0       	rjmp	.+30     	; 0x390 <main+0xca>
  372:	20 91 72 00 	lds	r18, 0x0072	; 0x800072 <photoSeensor>
  376:	30 91 73 00 	lds	r19, 0x0073	; 0x800073 <photoSeensor+0x1>
  37a:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <sensivity>
  37e:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <sensivity+0x1>
- 382:	28 17       	cp	r18, r24
- 384:	39 07       	cpc	r19, r25
+ 382:	82 17       	cp	r24, r18
+ 384:	93 07       	cpc	r25, r19
  386:	20 f0       	brcs	.+8      	; 0x390 <main+0xca>
  388:	b3 9b       	sbis	0x16, 3	; 22
  38a:	02 c0       	rjmp	.+4      	; 0x390 <main+0xca>
@@ -595,35 +595,32 @@ int main(void)
 
 		else if (PIR_STATUS && (photoSeensor < sensivity))
  390:	b0 9b       	sbis	0x16, 0	; 22
- 392:	0d c0       	rjmp	.+26     	; 0x3ae <main+0xe8>
+ 392:	9b cf       	rjmp	.-202    	; 0x2ca <main+0x4>
  394:	20 91 72 00 	lds	r18, 0x0072	; 0x800072 <photoSeensor>
  398:	30 91 73 00 	lds	r19, 0x0073	; 0x800073 <photoSeensor+0x1>
  39c:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <sensivity>
  3a0:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <sensivity+0x1>
  3a4:	28 17       	cp	r18, r24
  3a6:	39 07       	cpc	r19, r25
- 3a8:	10 f4       	brcc	.+4      	; 0x3ae <main+0xe8>
+ 3a8:	08 f0       	brcs	.+2      	; 0x3ac <main+0xe6>
+ 3aa:	8f cf       	rjmp	.-226    	; 0x2ca <main+0x4>
 		
 		BULB_OFF;
- 3aa:	c3 98       	cbi	0x18, 3	; 24
- 3ac:	8e cf       	rjmp	.-228    	; 0x2ca <main+0x4>
-		
-		else BULB_OFF; 
- 3ae:	c3 98       	cbi	0x18, 3	; 24
- 3b0:	8c cf       	rjmp	.-232    	; 0x2ca <main+0x4>
+ 3ac:	c3 98       	cbi	0x18, 3	; 24
+ 3ae:	8d cf       	rjmp	.-230    	; 0x2ca <main+0x4>
 		// ADC read function(10bit);
 		AdcInputsRead();
 		//AC switch priority;
 		while (switchOn && (timeCounter >= DEBOUNCE) && (hours < AC_SWITCHOFF_DELAY))
 		{
 			BULB_ON;
- 3b2:	c3 9a       	sbi	0x18, 3	; 24
- 3b4:	a0 cf       	rjmp	.-192    	; 0x2f6 <main+0x30>
- 3b6:	c3 9a       	sbi	0x18, 3	; 24
- 3b8:	9e cf       	rjmp	.-196    	; 0x2f6 <main+0x30>
+ 3b0:	c3 9a       	sbi	0x18, 3	; 24
+ 3b2:	a1 cf       	rjmp	.-190    	; 0x2f6 <main+0x30>
+ 3b4:	c3 9a       	sbi	0x18, 3	; 24
+ 3b6:	9f cf       	rjmp	.-194    	; 0x2f6 <main+0x30>
 
-000003ba <_exit>:
- 3ba:	f8 94       	cli
+000003b8 <_exit>:
+ 3b8:	f8 94       	cli
 
-000003bc <__stop_program>:
- 3bc:	ff cf       	rjmp	.-2      	; 0x3bc <__stop_program>
+000003ba <__stop_program>:
+ 3ba:	ff cf       	rjmp	.-2      	; 0x3ba <__stop_program>

@@ -1,11 +1,12 @@
 /*
+ * Light Controller ver1.0
  * pir_control.c
  * RC intrrnal Clock 9,6Mhz
  * Created: 23.08.2016 15:53:47
- * Author : Mazinov
- * PORTB3 Bulb out, log 1;
- * PORTB0 PIR-sensor, zero active level;
- * PORTB1 Light switch, zero active level;
+ * Author : Osman Mazinov
+ * PORTB3 Bulb out, log 1
+ * PORTB0 PIR-sensor, zero active level
+ * PORTB1 Light switch, zero active level
  */ 
 #ifndef F_CPU
 	#define F_CPU 9600000L
@@ -144,11 +145,11 @@ ISR (TIM0_COMPA_vect)
 	}
 
 	//Switch on delay and Pir sensor debounce;
-	if ((!(PIR_STATUS)) && (keyFlag == 0) && (photoSeensor >= sensivity))
+	if ((!(PIR_STATUS)) && (keyFlag == 0) && (photoSeensor <= sensivity))
 			on++;
 	else	on=0;
 	
-	if ((!(PIR_STATUS)) && (photoSeensor < sensivity) && (BULB_STATUS))
+	if ((!(PIR_STATUS)) && (photoSeensor > sensivity) && (BULB_STATUS))
 			timeCounterDown++;
 	else    timeCounterDown = 0;
 	//Reset the counter;
@@ -182,16 +183,16 @@ int main(void)
 		}
 		
 		//PIR=0,Switch=1;
-		if ((photoSeensor >= sensivity) && (!(PIR_STATUS))  && (on >= PIRDELAY))
+		if ((photoSeensor <= sensivity) && (!(PIR_STATUS))  && (on >= PIRDELAY))
 		
 		//Out is log 1;
 		BULB_ON;
 
-		else if ((!(PIR_STATUS)) && (photoSeensor < sensivity) && (BULB_STATUS) && (timeCounterDown > PHOTOOFFSET))
+		else if ((!(PIR_STATUS)) && (photoSeensor > sensivity) && (BULB_STATUS) && (timeCounterDown > PHOTOOFFSET))
 
 		BULB_OFF;
 		
-		else if ((!(PIR_STATUS)) && (!switchOn || switchOn) && (photoSeensor>=sensivity)  && (BULB_STATUS))
+		else if ((!(PIR_STATUS)) && (!switchOn || switchOn) && (photoSeensor<=sensivity)  && (BULB_STATUS))
 
 		BULB_ON;
 
@@ -199,7 +200,7 @@ int main(void)
 		
 		BULB_OFF;
 		
-		else BULB_OFF; 
+		//else BULB_OFF; 
 	}
 
 	
