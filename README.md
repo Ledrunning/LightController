@@ -14,3 +14,5 @@ In LightController folder you can find source code and Atmel Studio project;
 In D3MG_PCB folder you can find PCB for DIN-rail package D3MG;
 
 In Simulation folder you can find Proteus 8 project file for device simulation;
+
+In FUSEBIT_scr folder are screen shots with fuse bits configuration from Khazama programmer;
