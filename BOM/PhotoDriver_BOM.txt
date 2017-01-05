@@ -5,6 +5,6 @@
 3   J1      		 PLC           	  HDR-1x2    
 4   J2       		 PLC           	  HDR-1x3    
 5   R1       		 10k           	  RES_1206   
-6   R2, R4   	          22k           	  RES_1206   
+6   R2, R4   	         22k           	  RES_1206   
 7   R3      		 51           		RES_1206   
 8   U1       		 MCP6021       	  SO8        
