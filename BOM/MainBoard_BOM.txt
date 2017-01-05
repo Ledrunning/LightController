@@ -1,30 +1,25 @@
-#    RefDes                  		 Value            			 Name  
----------------------------------------------------------------------------------------------------------------------------------------------         
-1    C1, C5, C7,
-C10          		100u x 25
-        			8x5 D	 
-2    C2, C3, C4,
-C6, C8, C9  		 0.1             			CAP_1206          	 
-3    D1, D4                 			1N4007            			SMD               	 
-4    D2                      			 3mm              			LED               	 
-5    D3                      			 RGL1J-DIO         			SOD80             	
-6    D5                       			Bridge            			DBS107G           	
-7    D6                       			Zenner 5.6V       			OD80             	
-8    J1, J3, J4                                 	DG128V-03         					
-9    J2, J5                                    		DG128V-02         					
-10   K1                       			TRU-12VDC
-SB-CL   		801H-1C-C
-12VDC   
-11   Q1, Q2, Q3              		SOT23             			MMBT3904          	
-12   R1                       			3k                			RES_1206          	
-13   R2                     			200k              			RES_2512          
-14   R3, R6                   		4k7               			RES_1206          
-15   R4, R7                  		22k               			RES_1206          
-16   R5                       			10k               			RES_1206          
-17   R8, R9, R10              		10k               			RES_1206          
-18   T1                      			2x9V              			V30AJ
--15D8P5     
-19   U1                       			SOIC              			ATTINY13A         
-20   U2                      			SOT223            			LT1117IST         
-21   U3                       			D-PACK            			7805R             
-22   VO1                      		DIP4              			PC817             
+#    RefDes                  		 Value            	        Name  
+--------------------------------------------------------------------------------------       
+1    C1, C5, C7, C10       		100u x 25                       8x5 D	
+        			 
+2    C2, C3, C4, C6, C8, C9             0.1             		CAP_1206          	 
+3    D1, D4                 		1N4007            		SMD               	 
+4    D2                      		3mm              		LED               	 
+5    D3                      		RGL1J            		SOD80             	
+6    D5                       	        Bridge         			DBS107G           	
+7    D6                       		Zenner 5.6V       		SOD80             	
+8    J1, J3, J4                                 	                DG128V-03         					
+9    J2, J5                                    		                DG128V-02         					
+10   K1                       		TRU-12VDCSB-CL   		801H-1C-C12VDC   
+11   Q1, Q2, Q3              		SOT23             		MMBT3904          	
+12   R1                       		3k                		RES_1206          	
+13   R2                     		200k              		RES_2512          
+14   R3, R6                   		4k7               		RES_1206          
+15   R4, R7                  		22k               		RES_1206          
+16   R5                       		10k              		RES_1206          
+17   R8, R9, R10              		10k              		RES_1206          
+18   T1                      		2x9V              		V30AJ-15D8P5     
+19   U1                       		SOIC              		ATTINY13A         
+20   U2                      		SOT223            		LT1117IST         
+21   U3                       		D-PACK            		7805R             
+22   VO1                      		DIP4              		PC817             
