@@ -40,4 +40,4 @@ If the light key switch is turned off, the object is in the PIR-sensor and light
 
 <img src="https://habrastorage.org/files/5c6/6e2/3ce/5c66e23ce82f4ff2a964b5d229b054eb.jpg"/>
 
-More informations in Russian - http://ledrunner.ru/2017/01/05/light-controller/ (You can use the translate in this site on top right corner)
+More informations in Russian - http://ledrunner.ru/2017/01/05/light-controller/ (You can use the translate on this site on top right corner)
