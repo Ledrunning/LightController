@@ -19,15 +19,10 @@ In FUSEBIT_scr folder are screen shots with fuse bits configuration from Khazama
 
 In BOM folder you can find BOM(bill of materials) of main board and photodriver;
 
-<style type="text/css"> 
-   H1 { 
-    font-family: Arial, Helvetica, Verdana, sans-serif; /* Гарнитура шрифта */ 
-    font-size: 150%; /* Размер текста */ 
-    font-weight: lighter; /* Светлое начертание */ 
-    font-color: blue;
-   }
-  </style>
-
-<h1>Prototype foto: </h1>
+<h1> Prototype foto: </h1>
 
 <img src="https://habrastorage.org/files/e9f/563/888/e9f563888cdf4c149a052febf3b871ff.jpg"/>
+
+<h1> Conections: </h1>
+
+<img src="https://habrastorage.org/files/5c6/6e2/3ce/5c66e23ce82f4ff2a964b5d229b054eb.jpg"/>
