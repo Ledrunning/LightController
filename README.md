@@ -24,6 +24,7 @@ In BOM folder you can find BOM(bill of materials) of main board and photodriver;
     font-family: Arial, Helvetica, Verdana, sans-serif; /* Гарнитура шрифта */ 
     font-size: 150%; /* Размер текста */ 
     font-weight: lighter; /* Светлое начертание */ 
+    font-color: blue;
    }
   </style>
 
