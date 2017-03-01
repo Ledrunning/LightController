@@ -1,6 +1,6 @@
 # LightController
 
-'Open source project to control light in the room, garage, street, house etc;'
+Open source project to control light in the room, garage, street, house etc;
 
 In this project I used small Atmel AVR microcontroller Attiny13A, Pir sensor HC-SR501;
 
