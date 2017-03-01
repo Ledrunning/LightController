@@ -20,6 +20,18 @@ and handmade optodriver (light sensor based on phototransistor and Rail-To-Rail 
 
 * In BOM folder you can find BOM(bill of materials) of main board and photodriver;
 
+Algorithm:
+
+Priority always have a light key switch, regardless of the level of illumination of the object and when PIR-sensor is active.
+
+After about 5 hours, when the light key switch on, the light will automatically turn off. 
+
+If the light key switch is turned off, and object is in the PIR-sensor zone and dark outside, the light turns on and stays until the object leaves the field PIR-sensor.
+
+If the light key switch is turned off, the object is in the PIR-sensor field and dark outside, the light is turned on, and lights up when the subject in the field of PIR sensor lighting continues to work about 300 seconds.
+
+If the light key switch is turned off, the object is in the PIR-sensor and light street light does not turn on until the light level drops below a predetermined threshold or switch on light switch.
+
 # Prototype foto: 
 
 <img src="https://habrastorage.org/files/e9f/563/888/e9f563888cdf4c149a052febf3b871ff.jpg"/>
