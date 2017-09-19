@@ -20,6 +20,6 @@
 17   R8, R9, R10              		10k              		RES_1206          
 18   T1                      		2x9V              		V30AJ-15D8P5     
 19   U1                       		SOIC              		ATTINY13A         
-20   U2                      		SOT223            		LT1117IST         
+20   U2                      		SOT223            		7805 OR LM340         
 21   U3                       		D-PACK            		7805R             
 22   VO1                      		DIP4              		PC817             
