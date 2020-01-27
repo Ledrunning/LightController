@@ -41,3 +41,5 @@ If the light key switch is turned off, the object is in the PIR-sensor and light
 <img src="https://habrastorage.org/files/5c6/6e2/3ce/5c66e23ce82f4ff2a964b5d229b054eb.jpg"/>
 
 More informations in Russian - https://ledrunning.wordpress.com/2017/01/05/garage-light-controller/ (You can use the gtranslate on this site on right corner or on bottom(basement) of main page).
+
+Hackaday - https://hackaday.io/project/169694-light-controller
