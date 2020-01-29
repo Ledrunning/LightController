@@ -32,7 +32,7 @@ If the light key switch is turned off, the object is in the PIR-sensor field and
 
 If the light key switch is turned off, the object is in the PIR-sensor and light street light does not turn on until the light level drops below a predetermined threshold or switch on light switch.
 
-# Prototype foto: 
+# Prototype photo: 
 
 <img src="https://habrastorage.org/files/e9f/563/888/e9f563888cdf4c149a052febf3b871ff.jpg"/>
 
